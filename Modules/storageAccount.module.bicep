@@ -30,9 +30,7 @@ Deploys a storageAccount resource type or Data Lake resource type
   isDiagEnabled bool
 
 @relatedModule encryptStorageAccountWithCmks.module.bicep
-@author Basit Farooq
-@version 1.0.2
-@date 5th October 2021
+
 */
 
 param location string = resourceGroup().location

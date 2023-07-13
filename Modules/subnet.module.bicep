@@ -17,9 +17,7 @@ Deploys an array of subnets to an existing vnet, this can be used if you have de
            }
           }
          }]
-@author David Hole
-@version 1.0
-@date 24th August 2021
+
 */
 param subnetPropertyObject array 
 resource subnet 'Microsoft.Network/virtualNetworks/subnets@2021-02-01' = [for sn in subnetPropertyObject: { 

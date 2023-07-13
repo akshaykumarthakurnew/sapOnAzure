@@ -4,9 +4,7 @@
 @param location: string
 @param identity: string
 Note: Currently only SystemAssigned identity type is supported for Bicep modules
-@author Uday Kumar Gharge
-@version 1.0
-@ 29th June 2021
+
 */
 
 param dataFactoryName string = 'adf${uniqueString(resourceGroup().id)}'

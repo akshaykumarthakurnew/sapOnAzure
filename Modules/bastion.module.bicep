@@ -4,9 +4,6 @@ Deploys a Bastion instance into an existing virtual network. An existing subnet 
 @parameters 
   bastionSubnetID: String Existing vnet/subnet ID
   bastionHostName: String
-@author Aaron Cross
-@version 1.0
-@date 16th June 2021
 */
 
 param location string
@@ -22,7 +19,7 @@ param bastionRG string
 
 var publicIpAddressName = 'PIP-${bastionHostName}'
 
-module publicIPaddress 'publicIP.module.bicep' = {
+module publicIPaddress '../Modules/publicIP.module.bicep' = {
   name: 'bastionPIP'
   scope: resourceGroup(bastionRG)
   params:{

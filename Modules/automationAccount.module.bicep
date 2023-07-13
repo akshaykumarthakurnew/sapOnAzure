@@ -4,9 +4,6 @@ Deploys a single Automation Account with diagnostics enabled. If the name parame
 @parameters 
   LAWworkspaceID: String Existing OMS Workspace ID
   automationaccountName: String
-@author Aaron Cross
-@version 1.0
-@date 16th June 2021
 */
 param LAWworkspaceID string
 param automationaccountName string = 'AA-${uniqueString(resourceGroup().id)}'

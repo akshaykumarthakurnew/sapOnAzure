@@ -2,7 +2,7 @@
 Deploys N number of Linux Virtual Machines with OS disks into Availability zones specific to SAP
 
 @parameters []
-@author Rajdeep Das
+
 @author Akshay Kumar
 @version 1.0
 @date 29 June 2023

@@ -1,9 +1,6 @@
 /*
-A module that creates and load balancer
+A module that creates a load balancer
 
-@author David Hole
-@version 1.0
-@date 18th October 2022
 */
 
 @description('Required. The Load Balancer Name')

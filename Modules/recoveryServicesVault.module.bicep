@@ -22,9 +22,7 @@ Will also create a custom policy with the name and details specified in the rsvP
 @parameters 
   rsvName: String name of the RSV
   
-@author David Hole
-@version 2.0
-@date 14th September 2022
+
 */
 
 @description('Recovery Services vault name')

@@ -5,9 +5,7 @@ Creates a vnet peering between two vnets
   localVnetName: String
   remoteVnetName: String
   remoteVnetId: String Existing ID for remote hub vnet
-@author Aaron Cross
-@version 1.0
-@date 16th June 2021
+
 */
 param localVnetName string
 param remoteVnetName string

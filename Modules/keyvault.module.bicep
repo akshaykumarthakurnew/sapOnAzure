@@ -13,9 +13,7 @@ enableRbacAuthorization: Boolean for RBAC
 enablePurgeProtection: Boolean for Purge Protection
 softDeleteRetentionInDays: Boolean for soft delete
 networkAcls: Array[] containing IPrules and virtual network rules for KV firewall
-@author Aaron Cross
-@version 1.0
-@date 16th June 2021
+
 */
 
 param vaultName string = 'KV72-${uniqueString(resourceGroup().id)}'
@@ -67,7 +65,7 @@ resource keyvault 'Microsoft.KeyVault/vaults@2019-09-01' = {
   }
 }
 
-module kvPrivateEndpoint './privateEndPoint.module.bicep' = if(isPrivateEndpointEnabled) {
+module kvPrivateEndpoint '../Modules/privateEndPoint.module.bicep' = if(isPrivateEndpointEnabled) {
   name: 'PE-${vaultName}'
   params: {
     privateDnsZoneIds: privateDNSZoneIds

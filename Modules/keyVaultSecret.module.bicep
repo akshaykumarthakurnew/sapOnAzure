@@ -6,9 +6,7 @@ Create a secret in an existing Key Vault
   secretName: String the name of the secret to be created
   secretValue: Secure string containing the secret value. If not supplied a random GUID is generated.
   secretexpdate: Expiry date of the secret since 1970, this is the only format the parameter accepts value. For 12 months this is 31556952, set expiry date for secret multiply 31556952 x Number of months from the date
-@author Aaron Cross
-@version 1.0
-@date 30th August
+
 */
 param kvName string
 param secretName string

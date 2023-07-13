@@ -6,9 +6,7 @@ Deploys a single Public IP resource
   location string - The locaiton of the PIP. Defaults to RG location.
   allocationMethod string - The allocation method of the PIP. Dyna
   added pipSku and pipTier
-@author Aaron Cross, Jason Pisani
-@version 1.1
-@date 14th January 2022
+
 */
 
 param pipName string = 'PIP-${uniqueString(resourceGroup().id)}'

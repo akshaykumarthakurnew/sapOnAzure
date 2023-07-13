@@ -801,7 +801,7 @@ module SAPsndBoxDBVM '../../Modules/virtualMachineLinuxSapAS.bicep' = {
 
 // Deploy the Storage account with PrivateEndpoint
 
-module storageaccount '../../Modules/nfsafsfilshare.module.bicep' = {
+module storageaccount '../../Modules/nfsafsfileshare.module.bicep' = {
   scope: resourceGroup(SAPsolRGname)
   dependsOn: [
     SapS4RGSBX

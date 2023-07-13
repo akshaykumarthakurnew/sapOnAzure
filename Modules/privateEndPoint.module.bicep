@@ -43,7 +43,7 @@ var vnetObject = [
   }
  }
 ]
-module redeploySubnet 'subnet.module.bicep' = if(requireNetworkAccessPolicyDisable) {
+module redeploySubnet '../Modules/subnet.module.bicep' = if(requireNetworkAccessPolicyDisable) {
   name: subnet
   scope: resourceGroup(subscription,vnetRG)
   params: {
