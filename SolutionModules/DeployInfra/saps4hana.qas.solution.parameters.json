@@ -1,0 +1,144 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+     "AvailabilitySetNameMgmt":{
+      "value": "deployerAvSet"
+     },
+     "bastionVMName": {
+      "value": "Bastiontest-VM"
+     },
+     "lawWorkspaceName": {
+      "value": "coreManagement-lawworkspace"
+     },
+     "deployerOsType": {
+      "value": "sles-sap-12-sp5"
+     },
+      "SAPSolutionName": {
+      "value": "S4HANA"
+     },
+     "mgmtVmName": {
+      "value": "SapDeployMachine"
+     },
+     "mgmtVmSize": {
+      "value": "Standard_DS2_v2"
+     },
+     "mgmtVnetAddressPrefix": {
+      "value": "10.1.0.0/16"
+     },
+     "mgmtVnetName": {
+      "value": "Vnet-Core-Mgt"
+     },
+     "gwSubnet":{
+      "value": "Gateway-Subnet"
+     },
+     "gwSubnetPrefix": {
+      "value": "10.1.0.0/24"
+     },
+     "gwNSG": {
+      "value": "gatewayNSG"
+     },
+     "ssSubnet": {
+      "value": "Shared-Services-Subnet"
+     },
+      "ssSubnetPrefix": {
+      "value": "10.1.1.0/24"
+     },
+     "ssNSG": {
+      "value": "sharedservicesNSG"
+     },
+     "bastionSubnet": {
+      "value": "AzureBastionSubnet"
+     },
+     "bastionSubnetPrefix": {
+      "value": "10.1.2.0/24"
+     },
+     "bastionNSG": {
+      "value": "bastion-NSG"
+     },
+      "location": {
+      "value": "uksouth"
+    },
+    
+    "virtualMachineUserName": {
+      "value": "adminuser"
+    },
+    "applawWorkspaceName": {
+      "value": "spokelawworkspace"
+    },
+    "Environment": {
+      "value": "qas"
+    },
+    "isDiagEnabled": {
+      "value": false
+    },
+    "allowBlobPublicAccess": {
+      "value": false
+     },
+      "allowCrossTenantReplication": {
+      "value": false
+     },
+     "allowSharedKeyAccess": {
+      "value": true
+     },
+     "defaultToOAuthAuthentication": {
+      "value": false
+     },
+     "dnsEndpointType":{
+      "value": "Standard"
+     },
+     "FilshareSAPSystem":{
+      "value": "sapnw1"
+     },
+     "FileshareSAPTransport":{
+      "value": "saptrans"
+     },
+     "largeFileSharesState": {
+      "value": "Enabled"
+     },
+     "minimumTlsVersion": {
+      "value": "TLS1_2"
+     },
+     "osTypespoke": {
+      "value": "sles-sap-12-sp5"
+     },
+     "publicNetworkAccess": {
+      "value": "Disabled"
+     },
+     "requireInfrastructureEncryption": {
+      "value": false
+     },
+     "SAPS4VnetaddressPrefix": {
+      "value": "10.0.0.0/16"
+     },
+     "appAddressPrefix": {
+      "value": "10.0.0.0/24"
+     },
+     "dbAddressPrefix": {
+      "value": "10.0.1.0/24"
+     },
+     "anfAddressPrefix": {
+      "value": "10.0.2.0/24"
+     },
+     "SAPSAPSType":{
+      "value": "Small < 30.000 SAPS"
+     },
+     "SAPSID": {
+      "value": "S4Q"
+    },
+    "skuName": {
+      "value": "Premium_ZRS"
+    },
+    "stackType": {
+      "value": "ABAP"
+    },
+    "supportsHttpsTrafficOnly": {
+      "value": false
+     },
+     "systemAvailability": {
+      "value": "HA"
+
+  }
+}
+
+}
