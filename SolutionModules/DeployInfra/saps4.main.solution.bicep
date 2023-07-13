@@ -7,7 +7,6 @@ sbx = Sandbox
 dev = Development
 qas = Quality Assurance 
 
-@author Rajdeep Das
 @author Akshay Kumar
 @version 1.0
 @date 27 Feb 2023
@@ -72,7 +71,7 @@ param mgmtKvName string = 'mgmtkvm${uniqueString(utc)}'
 
 
 
-module sapmgt 'saps4.managment.solution.bicep' = if (isManagmentGroupRequired) {
+module sapmgt 'saps4.management.solution.bicep' = if (isManagmentGroupRequired) {
   name: 'sapmgt'
   params: {
     AvailabilitySetNameMgmt:AvailabilitySetNameMgmt

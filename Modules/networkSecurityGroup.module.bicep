@@ -17,9 +17,6 @@ Deploys a Network Security Group with default rules. An existing subnet ID param
           destinationAddressPrefix: '*'
         }
       }
-@author Aaron Cross
-@version 1.0
-@date 18th June 2021
 */
 param networkSecurityGroupName string = 'NSG-${uniqueString(resourceGroup().id)}'
 param isDiagEnabled bool = false

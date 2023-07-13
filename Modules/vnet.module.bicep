@@ -6,9 +6,6 @@ Outputs the VNET ID and array containing all subnets
   addressPrefix: String
   vnetName: String
   subnetPropertyObject: Array[] including any valid subnet properties.
-@author Aaron Cross
-@version 1.1
-@date 25th August 2021
 */
 param addressPrefix string = '10.0.0.0/16'
 

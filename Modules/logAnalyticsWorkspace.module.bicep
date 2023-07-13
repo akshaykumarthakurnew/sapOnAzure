@@ -1,12 +1,6 @@
 /*
 Deploys a single Log Analytics workspace with diagnostics enabled. If the name parameter is not supplied a randomly generated name will be used.
 Outputs the LAW ID
-
-@parameters 
-  logAnalyticsWorkspaceName: String
-@author Aaron Cross
-@version 1.0
-@date 16th June 2021
 */
 param logAnalyticsWorkspaceName string = 'LA-${uniqueString(resourceGroup().id)}'
 
