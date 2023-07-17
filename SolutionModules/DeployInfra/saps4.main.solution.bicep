@@ -174,7 +174,7 @@ param anfAddressPrefix string
 
 
 //Storage Account Parameters
-param storageAccounts string = '${Environment}sapnfs${uniqueString('nfsStorage')}'
+param storageAccounts string = '${Environment}sapnfs${uniqueString(SAPsolRGname)}'
 param defaultToOAuthAuthentication bool
 param dnsEndpointType string
 param FileshareSAPTransport string
@@ -191,7 +191,7 @@ param supportsHttpsTrafficOnly bool
 
 
 //Keyvault parameters
-param sapKvName string = 'sapkvm${uniqueString(SAPsolRGname)}'
+param sapKvName string = '${Environment}sapkvm${uniqueString(SAPsolRGname)}'
 //param sapKvName string = 'sapkvmDev'
 
 

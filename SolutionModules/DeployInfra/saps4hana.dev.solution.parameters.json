@@ -12,7 +12,7 @@
       "value": "coreManagement-lawworkspace"
      },
      "deployerOsType": {
-      "value": "sles-sap-12-sp5"
+      "value": "RHEL-7"
      },
       "SAPSolutionName": {
       "value": "S4HANA"

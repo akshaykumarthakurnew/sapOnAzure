@@ -70,6 +70,14 @@ var images = {
     OSType: 'Linux'
     UsePlan: false
   }
+  'RHEL-7': {
+    sku: '7-LVM'
+    offer: 'RHEL'
+    publisher: 'Redhat'
+    version: 'latest'
+    OSType: 'Linux'
+    UsePlan: false
+  }
  }
 
  @allowed([
@@ -77,7 +85,7 @@ var images = {
   'Windows Server 2012 R2 Datacenter'
   'Windows Server 2016 Datacenter'
   'sles-sap-12-sp5'
-  'RHEL 7.2'
+  'RHEL-7'
   'Oracle Linux 7.2'
 ])
 param osType string

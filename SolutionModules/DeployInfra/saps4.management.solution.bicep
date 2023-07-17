@@ -20,7 +20,7 @@ param mgmtVmName string
 param SAPSolutionName string 
 @description('Name of the resource group')
 param coreMgtRgName string = 'RG-${SAPSolutionName}-Core-Management'
-param sapBitsStrAccountName string = 'sapbitsDownloadSw'
+param sapBitsStrAccountName string = 'sapbits${uniqueString('sapbits')}'
 
 // NSG params
 
@@ -207,7 +207,8 @@ var bastionSecurityRules = [
 
 
 
-var sharedServicesSecurityRules = [ {
+var sharedServicesSecurityRules = [ 
+  {
     name: 'allow-ssh'
     properties: {
       priority: 100
@@ -219,7 +220,21 @@ var sharedServicesSecurityRules = [ {
       sourcePortRange: '*'
       destinationAddressPrefix: '*'
     }
-  } ]
+  } 
+  {
+    name: 'allow-bastion-inbound'
+    properties: {
+      priority: 110
+      sourceAddressPrefix: '10.1.2.0/24'
+      protocol: 'Tcp'
+      destinationPortRange: '*'
+      access: 'Allow'
+      direction: 'Inbound'
+      sourcePortRange: '*'
+      destinationAddressPrefix: '*'
+    }
+  } 
+]
 
 //---------------
 // Vnet params
@@ -363,7 +378,7 @@ module sharedservicesnsg '../../Modules/networkSecurityGroup.module.bicep' = {
   }
 }
 
-
+//param accessPolicies array = ['list','get']
 
 // Deploy the Keyvault Resource
 
@@ -376,6 +391,7 @@ module mgmtVmKv '../../Modules/keyvault.module.bicep' = {
     LAWworkspaceID: lawWorkspace.outputs.logAnalyticsWorkspaceID
     location: location
     isDiagEnabled: isDiagEnabled
+    //accessPolicies: accessPolicies
   }
 }
 
@@ -431,8 +447,10 @@ module deployerMachine '../../Modules/virtualMachineLinuxSapAS.bicep' = {
   dependsOn: [
     coreMgtVnet
     mgmtVmKvSecretUserPass
+    
   ]
 }
+
 
 // Bastion Machine deployment
 
@@ -464,6 +482,19 @@ module sapBitsStorageAccount  '../../Modules/storageAccount.module.bicep' = {
   }
 }
 
+module customscript '../../Modules/customscript.module.bicep' = {
+  scope: resourceGroup(coreMgtRgName)
+  name: 'customscript'
+  params: {
+    deployerMachine: mgmtVmName
+    location: location
+  }
+  dependsOn: [
+    deployerMachine
+    coreMgtVnet
+    // bastionMachine // delaying the custom script execution as bastion take most time
+  ]
+}
 
 output coreMgtVnetId string = coreMgtVnet.outputs.vnetID
 output coreMgtRgName string = coreMgtRG.name

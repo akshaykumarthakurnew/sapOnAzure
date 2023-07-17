@@ -29,7 +29,11 @@ param LAWworkspaceID string //Log Analytics WS
 param networkAcls object = {
   defaultAction: 'Deny'
   bypass: 'AzureServices'
-  ipRules: []
+  ipRules: [
+  {
+    value: '49.36.178.42'
+  }
+]
   virtualNetworkRules:[]
 }
 param isPrivateEndpointEnabled bool 
@@ -62,6 +66,27 @@ resource keyvault 'Microsoft.KeyVault/vaults@2019-09-01' = {
     enableRbacAuthorization: enableRbacAuthorization
     enablePurgeProtection: enablePurgeProtection == true ? true : any(null)
     networkAcls: networkAcls
+  }
+}
+var principalID = '34eebf4c-b9ac-4fcf-a077-84aa2ebf4529'
+var permissions = [
+  'get'
+  'list'
+]
+resource accesspolicy1 'Microsoft.KeyVault/vaults/accessPolicies@2023-02-01' = {
+  parent: keyvault
+  name: 'add'
+  properties: {
+    accessPolicies: [
+      {
+        tenantId: subscription().tenantId
+        objectId: principalID
+        permissions: {
+          secrets: permissions
+          keys: permissions
+        }
+      }
+    ]
   }
 }
 

@@ -674,6 +674,7 @@ module SapS4HANAVnet '../../Modules/vnet.module.bicep' = {
 }
 
 
+//param accessPolicies array = ['list','get']
 
 // Deploy the Keyvault Resource
 
@@ -686,6 +687,7 @@ module sapVmkv '../../Modules/keyvault.module.bicep' = {
     LAWworkspaceID: lawWorkspaceId
     location: location
     isDiagEnabled: isDiagEnabled
+    //accessPolicies: accessPolicies
   }
 }
 
