@@ -18,7 +18,7 @@ targetScope = 'subscription'
 
 //Global Parameters
 @description('Specify if the managment place is required or not default value = true')
-param isManagmentGroupRequired bool
+param isManagmentGroupRequired bool = true
 param Environment string
 param location string
 param virtualMachineUserName string
