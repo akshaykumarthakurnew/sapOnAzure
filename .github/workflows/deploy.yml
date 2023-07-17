@@ -12,3 +12,5 @@ jobs:
       uses: azure/login@v1
       with:
         creds: ${{ secrets.AZURE_CREDENTIALS }}
+    - name: run command
+      run: az deployment sub create --location "uksouth" --template-file "/home/runner/work/sapOnAzure/sapOnAzure/SolutionModules/DeployInfra/saps4.main.solution.bicep" --parameters "/home/runner/work/sapOnAzure/sapOnAzure/SolutionModules/DeployInfra/saps4hana.dev.solution.parameters.json"
