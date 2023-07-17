@@ -1,1 +1,11 @@
+name: Deploy SAP azure infra
 
+on:
+  workflow_dispatch:
+jobs:
+  deployinfra:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v3.5.3
+    - name: login to Azure using SP  
