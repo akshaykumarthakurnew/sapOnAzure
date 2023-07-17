@@ -2,9 +2,9 @@ name: Deploy SAP azure infra
 
 on:
   workflow_dispatch:
-    inputs:
-      isManagmentGroupRequired:
-        required: true
+    #inputs:
+    #  isManagmentGroupRequired:
+    #    required: true
 jobs:
   deployinfra:
     runs-on: ubuntu-latest
