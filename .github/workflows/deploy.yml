@@ -15,5 +15,38 @@ jobs:
       uses: azure/login@v1
       with:
         creds: ${{ secrets.AZURE_CREDENTIALS }}
-    - name: run command
-      run: az deployment sub create --location "uksouth" --template-file "/home/runner/work/sapOnAzure/sapOnAzure/SolutionModules/DeployInfra/saps4.main.solution.bicep" --parameters "/home/runner/work/sapOnAzure/sapOnAzure/SolutionModules/DeployInfra/saps4hana.dev.solution.parameters.json"
+    #- name: run command
+    #  run: az deployment sub create --location "uksouth" --template-file "/home/runner/work/sapOnAzure/sapOnAzure/SolutionModules/DeployInfra/saps4.main.solution.bicep" --parameters "/home/runner/work/sapOnAzure/sapOnAzure/SolutionModules/DeployInfra/saps4hana.dev.solution.parameters.json"
+
+    - name: Get Bastion host public IP
+      id: bastion-ip
+      run: |
+          bastion_ip=$(az network public-ip show --resource-group "RG-S4HANA-Core-Management" --name "PIP-BASTION-hdjnimtgmbkha" --query ipAddress -o tsv)
+          echo "Bastion Host IP: $bastion_ip"
+          echo "::set-output name=bastion_ip::$bastion_ip"
+    - name: Generate temporary SSH key pair
+      id: ssh-keygen
+      run: |
+          ssh-keygen -t rsa -b 4096 -N "" -f github_actions_ssh_key          
+          
+    - name: Copy public key to Bastion host
+      run: |
+          bastion_ip=${{ steps.bastion-ip.outputs.bastion_ip }}
+          scp -o StrictHostKeyChecking=no -i github_actions_ssh_key.pub github_actions_ssh_key.pub adminuser@$bastion_ip:/home/adminuser/
+
+    - name: SSH to Bastion host and SSH to Private VM
+      run: |
+          bastion_ip=${{ steps.bastion-ip.outputs.bastion_ip }}
+          private_vm_ip="10.1.1.4"
+          private_vm_username="adminuser"
+
+          # Use the ssh-keyscan command to add the Bastion host's key to known_hosts
+          ssh-keyscan -H $bastion_ip >> ~/.ssh/known_hosts
+
+          # SSH to the Bastion host and then SSH to the private VM using the temporary key
+          ssh -i github_actions_ssh_key -o "ProxyCommand ssh -i github_actions_ssh_key -W %h:%p <bastion-username>@$bastion_ip" $private_vm_username@$private_vm_ip
+
+          
+          
+          
+          
