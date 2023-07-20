@@ -15,9 +15,11 @@ jobs:
   delete1:
     runs-on: windows-latest
     environment: Delete1
+    if: ${{ env.delete_env_1 }} == 'true'
     steps:
     - name: execute powershell and take argumnets
-      if: ${{ env.delete_env_1 }} == 'true'
+      #if: ${{ env.delete_env_1 }} == 'true'  # this executes with env ars
+      ##if: ${{ gitub.event.input.delete_env_1 }} == 'true' # if input params to be used
       uses: Azure/powershell@v1
       with:
         inlineScript: echo ${{ vars.test1 }}
