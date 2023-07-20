@@ -3,6 +3,7 @@ env:
   delete_env_1: "true"
 
 on:
+  workflow_dispatch:
   schedule:
     - cron: '*/5 * * * *'
 jobs:
