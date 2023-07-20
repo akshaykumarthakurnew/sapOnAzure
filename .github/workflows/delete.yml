@@ -1,9 +1,14 @@
 name: testing wf 
-env:
-  delete_env_1: 'true'
+#env:
+#  delete_env_1: 'true'
 
 on:
   workflow_dispatch:
+    inputs:
+      delete_env_1:
+        required: true
+        default: true
+        type: boolean
   schedule:
     - cron: '*/5 * * * *'
 jobs:
@@ -12,7 +17,7 @@ jobs:
     environment: Delete1
     steps:
     - name: execute powershell and take argumnets
-      if: $delete_env_1 == 'true'
+      if: ${{github.event.inputs.delete_env_1 }} == 'true'
       uses: Azure/powershell@v1
       with:
         inlineScript: echo ${{ vars.test1 }}
