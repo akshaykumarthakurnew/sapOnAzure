@@ -1,13 +1,13 @@
 name: testing wf 
 env:
-  delete_env_1: true
+  delete_env_1: "true"
 
 on:
   schedule:
     - cron: '*/5 * * * *'
 jobs:
   delete1:
-    if: ${{ delete_env_1 == 'true' }}
+    if: env.delete_env_1 == 'true' 
     runs-on: windows-latest
     environment: Delete1
     steps:
