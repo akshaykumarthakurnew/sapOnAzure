@@ -12,7 +12,7 @@ jobs:
     environment: Delete1
     steps:
     - name: execute powershell and take argumnets
-      if: ${{ $delete_env_1 == 'true' }}
+      #if: ${{ $delete_env_1 == 'true' }}
       uses: Azure/powershell@v1
       with:
         inlineScript: echo ${{ vars.test1 }}
