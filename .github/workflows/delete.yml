@@ -4,11 +4,11 @@ env:
 
 on:
   schedule:
-    - cron: ""
+    - cron: '*/5 * * * *'
 jobs:
   delete1:
     if: ${{ env.delete_env_1 == 'true' }}
-    runs-on: windws-latest
+    runs-on: windows-latest
     environment: Delete1
     steps:
     - name: execute powershell and take argumnets
