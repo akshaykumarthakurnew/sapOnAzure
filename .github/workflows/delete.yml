@@ -7,7 +7,7 @@ on:
     - cron: '*/5 * * * *'
 jobs:
   delete1:
-    if: ${{ env.delete_env_1 == 'true' }}
+    if: ${{ delete_env_1 == 'true' }}
     runs-on: windows-latest
     environment: Delete1
     steps:
