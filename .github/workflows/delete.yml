@@ -7,11 +7,11 @@ on:
     - cron: '*/5 * * * *'
 jobs:
   delete1:
-    if: env.delete_env_1 == 'true' 
     runs-on: windows-latest
     environment: Delete1
     steps:
     - name: execute powershell and take argumnets
+      if: delete_env_1 == 'true' 
       uses: Azure/powershell@v1
       with:
         inlineScript: echo ${{ vars.test1 }}
